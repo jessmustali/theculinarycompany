@@ -21,7 +21,7 @@ const body = Hanken_Grotesk({
   subsets: ["latin"],
   variable: "--font-body",
   display: "swap",
-  weight: ["300", "400", "500"],
+  weight: ["300", "400", "500", "800"],
 });
 
 const mono = Fragment_Mono({
@@ -65,7 +65,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#1a1a1c",
+  themeColor: "#1a120c",
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover",

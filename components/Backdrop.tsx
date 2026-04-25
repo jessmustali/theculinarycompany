@@ -1,23 +1,18 @@
-/**
- * Full-bleed background photograph + cinematic scrim + film grain.
- *
- * Swap the `src` URL with your own asset when you're ready —
- * drop a file at `public/hero.jpg` and use `src="/hero.jpg"`.
- *
- * The CSS applies `grayscale(1) brightness(.5) contrast(1.12)` so any
- * input photo is pulled into the brand's monochrome key. A 28s
- * ken-burns drift adds quiet life without scrolling.
- */
 export function Backdrop() {
   return (
     <>
       <div className="backdrop" aria-hidden>
-        <img
-          src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=2400&q=85"
-          alt=""
-          loading="eager"
-          decoding="async"
-        />
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          poster="/hero-poster.jpg"
+        >
+          <source src="/hero.webm" type="video/webm" />
+          <source src="/hero.mp4" type="video/mp4" />
+        </video>
         <div className="scrim" />
       </div>
       <svg
@@ -33,7 +28,7 @@ export function Backdrop() {
             numOctaves={2}
             stitchTiles="stitch"
           />
-          <feColorMatrix values="0 0 0 0 0.05  0 0 0 0 0.05  0 0 0 0 0.05  0 0 0 0.55 0" />
+          <feColorMatrix values="0 0 0 0 0.09  0 0 0 0 0.06  0 0 0 0 0.04  0 0 0 0.55 0" />
         </filter>
         <rect width="100%" height="100%" filter="url(#n)" />
       </svg>

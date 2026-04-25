@@ -1,12 +1,13 @@
 :root {
-  /* monochrome — slight cool tint for cohesion */
-  --bg:        oklch(0.10  0.003 270);
-  --bg-deep:   oklch(0.06  0.003 270);
-  --line:      oklch(0.34  0.004 270 / 0.55);
-  --line-soft: oklch(0.34  0.004 270 / 0.18);
-  --text:      oklch(0.97  0.003 270);
-  --muted:     oklch(0.74  0.005 270);
-  --dim:       oklch(0.50  0.005 270);
+  /* warm browns — espresso ground, cream type */
+  --bg:        oklch(0.14  0.018 60);
+  --bg-deep:   oklch(0.09  0.014 55);
+  --line:      oklch(0.42  0.030 65 / 0.55);
+  --line-soft: oklch(0.42  0.030 65 / 0.18);
+  --text:      oklch(0.96  0.020 80);
+  --muted:     oklch(0.74  0.030 70);
+  --dim:       oklch(0.50  0.025 65);
+  --accent:    oklch(0.55  0.100 55);
 
   --display: var(--font-display), "Tobias", "Tiempos Headline", "Times New Roman", serif;
   --body:    var(--font-body),    -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
@@ -43,15 +44,14 @@ body {
   pointer-events: none;
   background: var(--bg-deep);
 }
-.backdrop img {
+.backdrop img,
+.backdrop video {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  /* pull any photo into the brand monochrome */
-  filter: grayscale(1) brightness(0.5) contrast(1.12);
-  /* slow ken-burns drift */
+  filter: sepia(0.25) saturate(1.08) brightness(0.78) contrast(1.10);
   animation: kenburns 32s ease-in-out infinite alternate;
   will-change: transform;
 }
@@ -64,10 +64,10 @@ body {
   inset: 0;
   background:
     linear-gradient(180deg,
-      oklch(0.08 0.003 270 / 0.55) 0%,
-      oklch(0.08 0.003 270 / 0.30) 25%,
-      oklch(0.08 0.003 270 / 0.55) 70%,
-      oklch(0.08 0.003 270 / 0.92) 100%);
+      oklch(0.09 0.018 55 / 0.06) 0%,
+      oklch(0.09 0.018 55 / 0.00) 30%,
+      oklch(0.09 0.018 55 / 0.04) 75%,
+      oklch(0.07 0.016 50 / 0.18) 100%);
 }
 .grain {
   position: fixed;
@@ -84,7 +84,7 @@ body {
   position: relative;
   z-index: 2;
   display: grid;
-  grid-template-rows: auto auto 1fr auto;
+  grid-template-rows: auto 1fr auto;
   height: 100dvh;
   padding: 0 var(--pad-x) var(--pad-y);
 }
@@ -175,29 +175,48 @@ nav a:hover::after, nav a:focus-visible::after { right: 0; }
 
 /* ── WORDMARK — the centerpiece ────────────────────────── */
 .wordmark {
-  align-self: center;
+  align-self: start;
   margin: 0;
-  font-family: var(--display);
-  font-style: italic;
-  font-weight: 400;
-  /* cap by BOTH axes so no-scroll holds on every device */
-  font-size: clamp(56px, min(15.5vw, 23vh), 232px);
-  line-height: 0.86;
-  letter-spacing: -0.038em;
-  color: var(--text);
-  font-feature-settings: "kern", "liga", "dlig";
+  padding-top: clamp(8px, 1.4vh, 20px);
+  font-family: var(--body);
+  font-style: normal;
+  font-weight: 800;
+  /* poster-bold: span the content width, capped by BOTH axes */
+  font-size: clamp(68px, min(20.5vw, 30vh), 330px);
+  line-height: 0.78;
+  letter-spacing: -0.04em;
+  color: oklch(0.97 0.008 85);
+  font-feature-settings: "kern", "liga";
 }
 .wordmark .line { display: block; }
-.wordmark .line-2 { padding-left: clamp(0px, 4vw, 88px); }
-.wordmark .reg {
-  font-family: var(--mono);
-  font-style: normal;
-  font-weight: 400;
-  font-size: 0.18em;
-  vertical-align: 0.85em;
-  margin-left: 0.18em;
-  letter-spacing: 0;
+.wordmark .line-1 { text-align: left; }
+.wordmark .line-2 { text-align: right; }
+/* per-pair kerning: only tighten where the contact surface between
+   two letters is small (curve↔curve, curve↔diagonal). Vertical stems
+   like il, in, mp keep default tracking. */
+.wordmark .k { letter-spacing: -0.09em; }
+.wordmark .tagline {
+  display: block;
+  text-align: left;
+  font-family: var(--display);
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(13px, 1.1vw, 17px);
+  line-height: 1;
+  letter-spacing: -0.005em;
   color: var(--muted);
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.wordmark .reg {
+  font-family: var(--body);
+  font-style: normal;
+  font-weight: 800;
+  font-size: 0.18em;
+  vertical-align: 1.05em;
+  margin-left: 0.10em;
+  letter-spacing: 0;
+  color: oklch(0.97 0.008 85);
 }
 
 /* ── FOOTER ────────────────────────────────────────────── */
@@ -207,7 +226,6 @@ nav a:hover::after, nav a:focus-visible::after { right: 0; }
   gap: 24px;
   align-items: end;
   padding-top: 18px;
-  border-top: 1px solid var(--line-soft);
 }
 .info { display: grid; gap: 4px; }
 .info-line {
@@ -215,9 +233,9 @@ nav a:hover::after, nav a:focus-visible::after { right: 0; }
   font-size: 11px;
   letter-spacing: 0.10em;
   text-transform: uppercase;
-  color: var(--muted);
+  color: oklch(0.97 0.008 85);
 }
-.info-line.dim { color: var(--dim); }
+.info-line.dim { color: oklch(0.97 0.008 85); }
 
 /* CTA — outline that fills on hover */
 .cta {
@@ -264,15 +282,14 @@ nav a:hover::after, nav a:focus-visible::after { right: 0; }
   nav { justify-content: flex-start; gap: 22px; }
   .foot { grid-template-columns: 1fr; gap: 18px; align-items: start; }
   .cta { justify-self: start; }
-  .wordmark { font-size: clamp(44px, 16vw, 96px); }
-  .wordmark .line-2 { padding-left: clamp(0px, 8vw, 40px); }
+  .wordmark { font-size: clamp(56px, 22vw, 132px); letter-spacing: -0.035em; }
   .ticker { font-size: 9.5px; letter-spacing: 0.10em; }
 }
 
 @media (max-height: 760px) {
   .wordmark {
-    font-size: clamp(40px, min(11vw, 17vh), 132px);
-    line-height: 0.88;
+    font-size: clamp(52px, min(16vw, 24vh), 200px);
+    line-height: 0.86;
   }
 }
 
