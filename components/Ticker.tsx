@@ -8,8 +8,8 @@ const ITEMS = [
 ];
 
 export function Ticker() {
-  // duplicate for a seamless -50% loop
-  const loop = [...ITEMS, ...ITEMS];
+  // triple for a seamless -33.333% loop (ensures overflow on narrow viewports)
+  const loop = [...ITEMS, ...ITEMS, ...ITEMS];
 
   return (
     <div className="ticker fx fx-1" aria-hidden>
