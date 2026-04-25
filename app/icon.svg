@@ -1,4 +1,18 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <rect width="32" height="32" fill="#1a1a1c"/>
-  <circle cx="16" cy="16" r="4.5" fill="#f3f3f5"/>
+  <style>
+    text { fill: #1a120c; }
+    @media (prefers-color-scheme: dark) {
+      text { fill: #f8f5f3; }
+    }
+  </style>
+  <text
+    x="16"
+    y="16"
+    text-anchor="middle"
+    dominant-baseline="central"
+    font-family="'Hanken Grotesk', system-ui, -apple-system, 'Segoe UI', sans-serif"
+    font-weight="800"
+    font-size="26"
+    letter-spacing="-2.4"
+  >cc</text>
 </svg>
