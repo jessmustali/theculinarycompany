@@ -295,8 +295,13 @@ nav a:hover::after, nav a:focus-visible::after { right: 0; }
     line-height: 0.84;
     letter-spacing: -0.055em;
   }
-  .ticker { font-size: 9.5px; letter-spacing: 0.10em; }
-  .ticker-track { animation: marquee 35s linear infinite; }
+  .ticker {
+    font-size: 9.5px;
+    letter-spacing: 0.10em;
+    -webkit-mask-image: none;
+            mask-image: none;
+  }
+  .ticker-track { animation: marquee 18s linear infinite; }
   .info-line { font-size: 10.5px; letter-spacing: 0.08em; }
 }
 
