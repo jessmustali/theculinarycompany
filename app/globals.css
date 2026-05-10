@@ -190,7 +190,7 @@ nav a:hover::after, nav a:focus-visible::after { right: 0; }
   font-style: normal;
   font-weight: 800;
   /* poster-bold: span the content width, capped by BOTH axes */
-  font-size: clamp(68px, min(20.5vw, 30vh), 330px);
+  font-size: clamp(68px, min(15.5vw, 32vh), 280px);
   line-height: 0.78;
   letter-spacing: -0.04em;
   color: oklch(0.97 0.008 85);
@@ -303,6 +303,18 @@ nav a:hover::after, nav a:focus-visible::after { right: 0; }
   }
   .ticker-track { animation: marquee 18s linear infinite; }
   .info-line { font-size: 10.5px; letter-spacing: 0.08em; }
+}
+
+@media (min-width: 821px) and (max-width: 1199px) {
+  .wordmark {
+    font-size: clamp(72px, 16.5vw, 220px);
+    line-height: 0.82;
+    letter-spacing: -0.045em;
+  }
+  .bar { gap: 16px; }
+  .foot { gap: 18px; padding-top: 14px; }
+  nav { gap: clamp(14px, 1.6vw, 24px); }
+  .ticker-track { animation-duration: 50s; }
 }
 
 @media (max-height: 760px) {
