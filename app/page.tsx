@@ -4,7 +4,7 @@ import { Wordmark } from "@/components/Wordmark";
 import { LiveClock } from "@/components/LiveClock";
 
 const APPLY_HREF =
-  "mailto:yummy@theculinarycompany.com?subject=Application%20for%20a%20seat";
+  "mailto:theculinarycompany.co@gmail.com?subject=Application%20for%20a%20seat&body=Yummy%2C%20do%20you%20have%20a%20spot%20for%20(number)%20open%3F%0AX%2Flinkedin%20(link)";
 
 export default function Page() {
   return (
